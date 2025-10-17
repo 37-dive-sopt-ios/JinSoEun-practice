@@ -11,7 +11,6 @@ class LoginViewController: UIViewController {
     
     // MARK: - Properties
     let Primary_orange = UIColor(red: 255/255, green: 111/255, blue: 15/255, alpha: 1.0)
-    let Grey500 = UIColor(red: 98/255, green: 98/255, blue: 98/255, alpha: 1.0)
     
     // MARK: - UI Components
     
@@ -28,11 +27,11 @@ class LoginViewController: UIViewController {
         let textField = UITextField(frame: CGRect(x: 20, y: 276, width: self.view.bounds.width - 40, height: 52))
         textField.placeholder = "아이디"
         textField.font = UIFont(name: "Pretendard-SemiBold", size: 14)
-        textField.borderStyle = .none // 기본 borderStyle 제거
+        textField.borderStyle = .none
         textField.backgroundColor = UIColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1.0)
         textField.layer.cornerRadius = 3
+        textField.clearButtonMode = .whileEditing
         textField.addLeftPadding(23)
-        textField.addRightPadding(23)
         return textField
     }()
     
@@ -44,8 +43,8 @@ class LoginViewController: UIViewController {
         textField.isSecureTextEntry = true
         textField.backgroundColor = UIColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1.0)
         textField.layer.cornerRadius = 3
+        textField.clearButtonMode = .whileEditing
         textField.addLeftPadding(23)
-        textField.addRightPadding(23)
         return textField
     }()
     
