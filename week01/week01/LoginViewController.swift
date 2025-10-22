@@ -9,9 +9,6 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    // MARK: - Properties
-    let Primary_orange = UIColor(red: 255/255, green: 111/255, blue: 15/255, alpha: 1.0)
-    
     // MARK: - UI Components
     
     lazy var titleLabel: UILabel = {
@@ -52,7 +49,7 @@ class LoginViewController: UIViewController {
         let button = UIButton(frame: CGRect(x: 20, y: 422, width: self.view.bounds.width - 40, height: 57))
         button.setTitle("로그인하기", for: .normal)
         button.titleLabel?.font = UIFont(name: "Pretendard-Bold", size: 18)
-        button.backgroundColor = Primary_orange
+        button.backgroundColor = .primaryOrange
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 6
         
