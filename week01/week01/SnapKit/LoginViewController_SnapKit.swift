@@ -1,13 +1,17 @@
 //
-//  LoginViewController.swift
+//  LoginViewController_SnapKit.swift
 //  week01
 //
-//  Created by 진소은 on 10/17/25.
+//  Created by 진소은 on 10/18/25.
 //
 
 import UIKit
+import SnapKit
 
-class LoginViewController: UIViewController {
+class LoginViewController_SnapKit: UIViewController {
+    
+    // MARK: - Properties
+    let Primary_orange = UIColor(red: 255/255, green: 111/255, blue: 15/255, alpha: 1.0)
     
     // MARK: - UI Components
     
@@ -49,7 +53,7 @@ class LoginViewController: UIViewController {
         let button = UIButton()
         button.setTitle("로그인하기", for: .normal)
         button.titleLabel?.font = UIFont(name: "Pretendard-Bold", size: 18)
-        button.backgroundColor = .primaryOrange
+        button.backgroundColor = Primary_orange
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 6
         
@@ -71,34 +75,34 @@ class LoginViewController: UIViewController {
     private func setUI() {
         view.backgroundColor = .white
         self.view.addSubviews(titleLabel, idTextField, passwordTextField, loginButton)
-        [titleLabel, idTextField, passwordTextField, loginButton].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
     }
     
     private func setLayout() {
-        NSLayoutConstraint.activate([titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                                     titleLabel.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 163)])
-        
-        NSLayoutConstraint.activate([idTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 71),
-                                     idTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                                     idTextField.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
-                                     idTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-                                     idTextField.heightAnchor.constraint(equalToConstant: 52)
-                                    ])
-        
-        NSLayoutConstraint.activate([passwordTextField.topAnchor.constraint(equalTo: idTextField.bottomAnchor, constant: 7),
-                                     passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                                     passwordTextField.leadingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
-                                     passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-                                     passwordTextField.heightAnchor.constraint(equalToConstant: 52)
-                                    ])
-        
-        NSLayoutConstraint.activate([loginButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 217),
-                                     loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                                     loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-                                     loginButton.heightAnchor.constraint(equalToConstant: 58)
-                                    ])
+        titleLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().offset(163)
+        }
+
+        idTextField.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(titleLabel.snp.bottom).offset(71)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(52)
+        }
+
+        passwordTextField.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(idTextField.snp.bottom).offset(7)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+
+            $0.height.equalTo(52)
+        }
+
+        loginButton.snp.makeConstraints {
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(35)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(58)
+        }
     }
     
     private func pushToWelcomeVC() {
@@ -115,5 +119,5 @@ class LoginViewController: UIViewController {
 
 
 #Preview {
-    LoginViewController()
+    LoginViewController_SnapKit()
 }
